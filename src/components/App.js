@@ -8,8 +8,8 @@ import apiKey from "../config";
 import axios from 'axios';
 
 //Components
-import ImageList from './ImageList';
 import Navigation from './Navigation';
+import Results from "./Results";
 
 export default class App extends Component {
 
@@ -68,11 +68,7 @@ export default class App extends Component {
                 <BrowserRouter>
                     <div className="container">
                         <Navigation/>
-
-                        <div className="photo-container">
-                            <h2>Results</h2>
-                            <ImageList image={this.cats}/>
-                        </div>
+                        <Results />
                     </div>
                 </BrowserRouter>
         </Provider>

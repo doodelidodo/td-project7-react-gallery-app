@@ -1,12 +1,13 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 
 const ImageList = () => {
     return (
         <nav className="main-nav">
             <ul>
-                <li><a href='#'>Cats</a></li>
-                <li><a href='#'>Dogs</a></li>
-                <li><a href='#'>Computers</a></li>
+                <li><NavLink to='/dogs'>Cats</NavLink></li>
+                <li><NavLink to='/cats'>Dogs</NavLink></li>
+                <li><NavLink to='/birds'>Computers</NavLink></li>
             </ul>
         </nav>
     )
