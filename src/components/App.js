@@ -21,6 +21,7 @@ export default class App extends Component {
             cats: [],
             dogs: [],
             birds: [],
+            search: [],
             loading: true
         };
     }
@@ -68,6 +69,7 @@ export default class App extends Component {
     };
 
     handleUserSearch = (searchValue) => {
+        this.state.search = [];
         this.performSearch(searchValue);
     };
 
