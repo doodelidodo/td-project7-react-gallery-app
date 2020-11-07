@@ -1,20 +1,18 @@
 import React from 'react';
-import {Consumer} from './Context';
+import Image from "./Image";
+import NoResults from "./NoResults"
 
-const ImageList = () => {
+const ImageList = (props) => {
+    console.log(props.data.length);
     return (
-        <Consumer>
-            {context => {
-                return (
-                    <ul>
-                        {context.dogs.map((image, index) =>
-                            <li><img src={image} alt={""}></img></li>
-                        )}
-                    </ul>
+        <ul>
+            {props.data.length > 0 ?
+                props.data.map((image, index) =>
+                    <Image image={image} />
                 )
+                : <NoResults />
             }
-            }
-        </Consumer>
+        </ul>
     )
 };
 

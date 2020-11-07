@@ -10,6 +10,7 @@ import axios from 'axios';
 //Components
 import Navigation from './Navigation';
 import Results from "./Results";
+import SearchForm from "./SearchForm";
 
 export default class App extends Component {
 
@@ -19,6 +20,7 @@ export default class App extends Component {
             images: [],
             cats: [],
             dogs: [],
+            birds: [],
             loading: true
         };
     }
@@ -26,6 +28,7 @@ export default class App extends Component {
     componentDidMount() {
         this.performSearch("dogs");
         this.performSearch("cats");
+        this.performSearch("birds");
     }
 
     performSearch = (query) => {
@@ -47,6 +50,13 @@ export default class App extends Component {
                         }),
                         loading: false
                     })
+                } else if(query === "birds") {
+                    this.setState({
+                        birds: response.data.photos.photo.map(photo => {
+                            return  `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
+                        }),
+                        loading: false
+                    })
                 } else {
                     this.setState({
                         search: response.data.photos.photo,
@@ -59,14 +69,23 @@ export default class App extends Component {
             });
     };
 
+    handleUserSearch = (searchValue) => {
+        this.performSearch(searchValue);
+    };
+
     render() {
         return (
             <Provider value={{
                 cats: this.state.cats,
-                dogs: this.state.dogs
+                dogs: this.state.dogs,
+                birds: this.state.birds,
+                actions: {
+                    userSearch: this.handleUserSearch
+                }
             }}>
                 <BrowserRouter>
                     <div className="container">
+                        <SearchForm/>
                         <Navigation/>
                         <Results />
                     </div>

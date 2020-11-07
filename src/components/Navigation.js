@@ -5,9 +5,9 @@ const ImageList = () => {
     return (
         <nav className="main-nav">
             <ul>
-                <li><NavLink to='/dogs'>Cats</NavLink></li>
-                <li><NavLink to='/cats'>Dogs</NavLink></li>
-                <li><NavLink to='/birds'>Computers</NavLink></li>
+                <li><NavLink to='/dogs'>Dogs</NavLink></li>
+                <li><NavLink to='/cats'>Cats</NavLink></li>
+                <li><NavLink to='/birds'>Birds</NavLink></li>
             </ul>
         </nav>
     )
