@@ -34,11 +34,9 @@ export default class App extends Component {
     performSearch = (query) => {
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&format=json&nojsoncallback=1&per_page=24`)
             .then(response => {
-                console.log(response);
                 if(query === "cats") {
                     this.setState({
                         cats: response.data.photos.photo.map(photo => {
-                            console.log(query);
                             return  `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
                         }),
                         loading: false

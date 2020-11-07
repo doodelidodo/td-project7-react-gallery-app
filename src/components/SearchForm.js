@@ -33,7 +33,6 @@ class SearchForm extends Component {
                         </form>
                     );
                 }}
-
             </Consumer>
         );
     }
