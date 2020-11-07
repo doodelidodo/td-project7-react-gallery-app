@@ -69,7 +69,7 @@ export default class App extends Component {
     };
 
     handleUserSearch = (searchValue) => {
-        this.state.search = [];
+        this.setState({search: []});
         this.performSearch(searchValue);
     };
 
