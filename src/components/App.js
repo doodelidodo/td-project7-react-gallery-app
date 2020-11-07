@@ -79,6 +79,7 @@ export default class App extends Component {
                 cats: this.state.cats,
                 dogs: this.state.dogs,
                 birds: this.state.birds,
+                search: this.state.search,
                 actions: {
                     userSearch: this.handleUserSearch
                 }
