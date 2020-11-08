@@ -15,7 +15,7 @@ const Results = () => {
                             <Route path="/dogs" render={() => <ImageList data={context.dogs} loading={context.loading} title="Dogs"/>} />
                             <Route path="/cats" render={() => <ImageList data={context.cats} loading={context.loading} title="Cats"/>} />
                             <Route path="/birds" render={() => <ImageList data={context.birds} loading={context.loading} title="Birds"/>} />
-                            <Route path="/search" render={() => <ImageList data={context.search} loading={context.loading} title="Search"/>} />
+                            <Route path="/search" render={() => <ImageList data={context.search} loading={context.loading} title={context.searchTitle}/>} />
                             <Route component={NotFound} />
                         </Switch>
                     </div>
