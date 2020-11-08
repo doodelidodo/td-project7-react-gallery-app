@@ -4,14 +4,17 @@ import NoResults from "./NoResults"
 
 const ImageList = (props) => {
     return (
-        <ul>
-            {props.data.length > 0 ?
-                props.data.map((image, index) =>
-                    <Image image={image} key={index} />
-                )
-                : <NoResults />
-            }
-        </ul>
+        <React.Fragment>
+            <h2>{props.title}</h2>
+            <ul>
+                {props.data.length > 0 ?
+                    props.data.map((image, index) =>
+                        <Image image={image} key={index} />
+                    )
+                    : <NoResults />
+                }
+            </ul>
+        </React.Fragment>
     )
 };
 

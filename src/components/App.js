@@ -58,7 +58,9 @@ export default class App extends Component {
                     })
                 } else {
                     this.setState({
-                        search: response.data.photos.photo,
+                        search: response.data.photos.photo.map(photo => {
+                            return  `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
+                        }),
                         loading: false
                     })
                 }
@@ -69,7 +71,10 @@ export default class App extends Component {
     };
 
     handleUserSearch = (searchValue) => {
-        this.setState({search: []});
+        this.setState({
+            search: [],
+            loading: true
+        });
         this.performSearch(searchValue);
     };
 
@@ -80,15 +85,21 @@ export default class App extends Component {
                 dogs: this.state.dogs,
                 birds: this.state.birds,
                 search: this.state.search,
+                loading: this.state.loading,
                 actions: {
                     userSearch: this.handleUserSearch
                 }
             }}>
                 <BrowserRouter>
                     <div className="container">
-                        <SearchForm/>
+                        <SearchForm />
                         <Navigation/>
-                        <Results />
+                        {
+                            (this.state.loading)
+                                ? <p>Loading...</p>
+                                :  <Results />
+                        }
+
                     </div>
                 </BrowserRouter>
         </Provider>

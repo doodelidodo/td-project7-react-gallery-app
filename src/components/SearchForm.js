@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { Consumer } from "./Context";
+import { withRouter } from "react-router";
 
 class SearchForm extends Component {
 
     userInput = React.createRef();
 
-    pushToSearch() {
-        this.props.history.push("search");
-    }
-
-
     render(){
+        const { history } = this.props;
         return (
             <Consumer>
                 { context => {
@@ -18,7 +15,7 @@ class SearchForm extends Component {
                         e.preventDefault();
                         context.actions.userSearch(this.userInput.current.value);
                         e.currentTarget.reset();
-                        this.pushToSearch();
+                        history.push("search");
                     };
                     return(
                         <form className="search-form" onSubmit={handleSubmit}>
@@ -38,4 +35,4 @@ class SearchForm extends Component {
     }
 };
 
-export default SearchForm;
+export default withRouter(SearchForm);

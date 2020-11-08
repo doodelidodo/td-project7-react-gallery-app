@@ -10,13 +10,12 @@ const Results = () => {
             {context => {
                 return(
                     <div className="photo-container">
-                        <h2>Results</h2>
                         <Switch>
                             <Route exact path="/" render={() => <Redirect to="/dogs" />} />
-                            <Route path="/dogs" render={() => <ImageList data={context.dogs}/>} />
-                            <Route path="/cats" render={() => <ImageList data={context.cats}/>} />
-                            <Route path="/birds" render={() => <ImageList data={context.birds}/>} />
-                            <Route path="/search" render={() => <ImageList data={context.search}/>} />
+                            <Route path="/dogs" render={() => <ImageList data={context.dogs} loading={context.loading} title="Dogs"/>} />
+                            <Route path="/cats" render={() => <ImageList data={context.cats} loading={context.loading} title="Cats"/>} />
+                            <Route path="/birds" render={() => <ImageList data={context.birds} loading={context.loading} title="Birds"/>} />
+                            <Route path="/search" render={() => <ImageList data={context.search} loading={context.loading} title="Search"/>} />
                             <Route component={NotFound} />
                         </Switch>
                     </div>
